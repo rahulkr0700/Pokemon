@@ -5,7 +5,7 @@ export const Pokemon=()=>{
     const[pokemon,setPokemon]=useState(null);
     const[loading,setLoading]=useState(true);
     const[error,setError]=useState(null);
-    const API="https://pokeapi.co/api/v2/pokemon/pikachu";
+    const API="https://pokeapi.co/api/v2/pokemon?limit=24";
       
 
     // const fetchPokemon=()=>{
@@ -25,6 +25,11 @@ export const Pokemon=()=>{
         try{
           const res= await fetch(API);
           const data= await res.json();
+
+          const detailedPokemonData=data.result.map(async(curPokemon)=>{
+          const res= await fetch(curPokemon.url);
+          const data= await res.json();
+          })
           setPokemon(data);
           setLoading(false);
 
