@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "./Pokemon.css";
+import { PokemonCards } from "./PokemonCards";
 
 export const Pokemon=()=>{
-    const[pokemon,setPokemon]=useState(null);
-    const[loading,setLoading]=useState(true);
-    const[error,setError]=useState(null);
+    const[pokemon,setPokemon]=useState([]);
+    // const[loading,setLoading]=useState(true);
+    // const[error,setError]=useState(null);
     const API="https://pokeapi.co/api/v2/pokemon?limit=24";
       
 
@@ -26,18 +27,23 @@ export const Pokemon=()=>{
           const res= await fetch(API);
           const data= await res.json();
 
-          const detailedPokemonData=data.result.map(async(curPokemon)=>{
+          const detailedPokemonData=data.results.map(async(curPokemon)=>{
           const res= await fetch(curPokemon.url);
           const data= await res.json();
-          })
-          setPokemon(data);
-          setLoading(false);
+          return data;
+          });
+          console.log(detailedPokemonData);
+          const detailedResponses =  await Promise.all(detailedPokemonData);
+          console.log(detailedResponses);
+          setPokemon(detailedResponses);
+        //   setPokemon(data);
+        //   setLoading(false);
 
         }
         catch(error){
             console.log(error);
-            setError(error);
-            setLoading(false);
+            // setError(error);
+            // setLoading(false);
         }
     }
 
@@ -45,46 +51,36 @@ export const Pokemon=()=>{
         fetchPokemon();
     },[])
 
-    console.log(pokemon);
+    // console.log(pokemon);
     
-    if(loading){
-        return(
-            <h1>Loading</h1>
-        )
-    }
-    if(error){
-        return(
-            <div>
-                <h1>Error:{err.message}</h1>
-            </div>
-        )
-    }
+    // if(loading){
+    //     return(
+    //         <h1>Loading</h1>
+    //     )
+    // }
+    // if(error){
+    //     return(
+    //         <div>
+    //             <h1>Error:{err.message}</h1>
+    //         </div>
+    //     )
+    // }
     return(
+       <>
        <section className="container">
-           <header>
-              <h1>Lets Catch Pokemon</h1>
-           </header>
-           <ul className="card-demo"> 
-             <li className="pokemon-card">
-                 <figure> 
-                    <img src={pokemon.sprites.other.dream_world.front_default} 
-                    alt={pokemon.name} 
-                    className="pokemon-image"/>
-                 </figure>
-                 <h1>{pokemon?.name}</h1>
-                 <div className="grid-three-cols">
-                    <p className="pokemon-info">
-                        Height: <span>{pokemon.height}</span>
-                    </p>
-                    <p className="pokemon-info">
-                        Weight: <span>{pokemon.weight}</span>
-                    </p>
-                    <p className="pokemon-info">
-                        Speed: <span>{pokemon.stats[5].base_stat}</span>
-                    </p>
-                 </div>
-               </li>
-           </ul>
+        <header>
+            <h1>Lets Catch Pokemon</h1>
+        </header>
+        <div>
+            <ul className="cards">
+               {
+                pokemon.map((curPokemon) => {
+                  return <PokemonCards key={curPokemon.id} pokemonData={curPokemon} />;
+                })
+               }
+            </ul>
+        </div>
        </section>
+       </>
     );
 }
