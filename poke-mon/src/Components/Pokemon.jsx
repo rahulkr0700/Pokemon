@@ -50,7 +50,7 @@ export const Pokemon=()=>{
     useEffect(()=>{
         fetchPokemon();
     },[]);
-    
+
 //   Searching
   const searchData = pokemon.filter((curPokemon) =>
   curPokemon.name.toLowerCase().includes(search.toLowerCase())
@@ -72,7 +72,7 @@ export const Pokemon=()=>{
     }
     return(
        <>
-       <section className="container">
+       <div className="container">
         <header>
             <h1>Lets Catch Pokemon</h1>
         </header>
@@ -88,7 +88,7 @@ export const Pokemon=()=>{
                }
             </ul>
         </div>
-       </section>
+       </div>
        </>
     );
 }

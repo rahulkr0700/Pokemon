@@ -147,6 +147,7 @@ input[type="text"] {
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
+ 
 }
 
 .pokemon-card:hover {
@@ -156,7 +157,10 @@ input[type="text"] {
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  box-shadow: rgba(23, 41, 110, 1) 0px 48px 100px 0px;
+  border: 0.3rem solid rgba(23, 41, 110, 0.6);
+  border-radius: 1rem;
+
 }
 
 figure {
