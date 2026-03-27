@@ -29,6 +29,14 @@
     font-size: 16px;
   }
 }
+body {
+  background: linear-gradient(
+    135deg,
+    #0a0f28,
+    #111a3a,
+    #1a2a6c
+  );
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
