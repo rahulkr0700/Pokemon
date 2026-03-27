@@ -72,7 +72,7 @@ export const Pokemon=()=>{
     }
     return(
        <>
-       <div className="container">
+       <section className="container"  >
         <header>
             <h1>Lets Catch Pokemon</h1>
         </header>
@@ -88,7 +88,7 @@ export const Pokemon=()=>{
                }
             </ul>
         </div>
-       </div>
+       </section>
        </>
     );
 }

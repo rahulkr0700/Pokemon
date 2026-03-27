@@ -45,7 +45,7 @@ span {
 }
 
 .container {
-  max-width:152rem;
+  max-width:200rem;
   margin: auto;
 }
 
@@ -222,5 +222,94 @@ pokemon-info {
   & button {
     padding: 0.6rem 0;
     cursor: pointer;
+  }
+}
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Large tablets (1024px and below) */
+@media (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-three-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pokemon-card {
+    width: 100%;
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  html {
+    font-size: 56%;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .grid-three-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-search input {
+    width: 100%;
+  }
+
+  .short-container {
+    width: 90%;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-card {
+    width: 100%;
+    padding: 1.2rem;
+  }
+
+  .pokemon-image {
+    width: 80%;
+    height: auto;
+  }
+
+  .container {
+    padding: 0 1.6rem;
+  }
+
+  h1 {
+    font-size: 3.6rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  html {
+    font-size: 45%;
+  }
+}
+/* Mobile devices */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem; /* reduced from 3.6rem */
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+  h1 {
+    font-size: 2rem; /* even smaller */
   }
 }
