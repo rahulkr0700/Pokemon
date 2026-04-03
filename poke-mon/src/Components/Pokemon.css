@@ -102,9 +102,8 @@ input[type="text"] {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 42rem));
   justify-content: center;
-  align-items: center;
   gap: 3.2rem;
 }
 
@@ -209,6 +208,11 @@ pokemon-info {
 
 /* ================= RESPONSIVE DESIGN ================= */
 
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(3, 42rem);
+  }
+}
 @media (max-width: 1024px) {
   .grid-three-cols {
     grid-template-columns: repeat(2, 1fr);
