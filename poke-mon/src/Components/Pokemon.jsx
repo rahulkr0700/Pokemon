@@ -10,19 +10,6 @@ export const Pokemon=()=>{
     const API="https://pokeapi.co/api/v2/pokemon?limit=124";
       
 
-    // const fetchPokemon=()=>{
-    //     fetch(API)
-    //     .then((res)=>res.json())
-    //     .then((data)=>{setPokemon(data);
-    //         setLoading(false);
-    //     })
-    //     .catch((err)=>{
-    //         console.log(err);
-    //         setError(err);
-    //         setLoading(false);
-    //     });
-    //     };
-
     const fetchPokemon=async()=>{
         try{
           const res= await fetch(API);
@@ -33,7 +20,7 @@ export const Pokemon=()=>{
           const data= await res.json();
           return data;
           });
-          console.log(detailedPokemonData);
+        //   console.log(detailedPokemonData);
           const detailedResponses =  await Promise.all(detailedPokemonData);
           console.log(detailedResponses);
           setPokemon(detailedResponses);
@@ -74,7 +61,7 @@ export const Pokemon=()=>{
        <>
        <section className="container"  >
         <header>
-            <h1>Lets Catch Pokemon</h1>
+            <h2>Lets Catch Pokemon</h2>
         </header>
         <div className="pokemon-search">
             <input type="text" placeholder="Search Pokemon" value={search} onChange={(e)=> setSearch(e.target.value)}/>
